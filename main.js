@@ -45,8 +45,6 @@ function update(){
 
 function animate(){
     canvas.height=window.innerHeight;
-        
-
     ctx.save();
     ctx.translate(0,-car.y+canvas.height*0.8);
     road.draw(ctx);

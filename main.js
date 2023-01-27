@@ -15,7 +15,7 @@ for (let i=0;i<trafficCount;i++){
 }
 //console.log(traffic)
 const trafficimg = new Image();  
-trafficimg.src = './car.png';
+trafficimg.src = './yellow.png';
 trafficimg.onload = function() {
     car.draw(ctx, trafficimg, traffic);
 }

@@ -1,7 +1,10 @@
 const canvas=document.getElementById("myCanvas");
 canvas.width=850;
+var stop = false;
+var frameCount= 0;
+var $results = $("#results");
+var fps, fpsInterval, starTime, now, then, elapsed;
 const maxSpeed = 6.55
-
 const trafficCount = 2000
 const trafficDistance = 501
 const ctx=canvas.getContext("2d");
@@ -20,7 +23,13 @@ img.onload = function() {
     car.draw(ctx, img, traffic);
 }
 car.draw(ctx, img, traffic);
-animate();
+function startAnimating(fps){
+    fpsInterval = 1000/fps;
+    then=Date.now;
+    starTime = then;
+    animate();
+}
+
 
 
 

@@ -21,17 +21,28 @@ img.onload = function() {
 }
 car.draw(ctx, img, traffic);
 
+Mainloop();
+
+
 animate();
 
 
 
+function Mainloop(){
+    update();
+    animate();
+}
 
 
-function animate(){
+function update(){
     for(let i=0;i<traffic.length;i++){
         traffic[i].update(road.borders,[]);
     }
     car.update(road.borders,traffic);
+}
+
+
+function animate(){
     canvas.height=window.innerHeight;
         
 
@@ -43,8 +54,6 @@ function animate(){
     }
     car.draw(ctx, img, traffic);
     ctx.restore();
-    setTimeout(() => {
-        requestAnimationFrame(animate);
-    }, 1000/fps);
+    requestAnimationFrame(Mainloop);
 }
-animate();
+//Mainloop();

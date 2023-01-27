@@ -40,16 +40,12 @@ function update(){
 function render(){
     carCanvas.height=window.innerHeight;
     networkCanvas.height=window.innerHeight;
-
     carCtx.save();
     carCtx.translate(0,-car.y+carCanvas.height*0.8);
     road.draw(carCtx);
     for(let i=0;i<traffic.length;i++){
         traffic[i].draw(carCtx,trafficimg)
     }
-    //car.draw(carCtx, trafficimg, traffic);
-
-    //car.draw(carCtx, trafficimg, traffic);
     car.draw(carCtx, carimg, traffic);
     carCtx.restore();
     requestAnimationFrame(render);

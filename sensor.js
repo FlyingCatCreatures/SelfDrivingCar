@@ -7,7 +7,6 @@ class Sensor{
 
         this.rays=[];
         this.readings=[];
-        console.log(this)
 
     }
 

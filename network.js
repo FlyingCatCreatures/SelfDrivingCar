@@ -1,0 +1,38 @@
+class Level{
+    constructor(inputCount,outputCount){
+        this.inputs=new Array(inputCount);
+        this.outputs=new Array(outputCount);
+        this.biases=new Array(outputCount);
+
+        this.weights=[];
+        for(let i=0;i<inputCount;i++){
+            this.weights[i]=new Array(outputCount)
+        }
+
+        Level.#randomize(this);
+    }
+
+    static #randomize(level){
+        for(let  i=0;i<level.inpits.length;i++){
+            for(letj=0;j<level.ouputs.length;j++){
+                level.weights[i][j]=Math.random*2-1
+            }
+        }
+
+        for(let i=0;i<level.biases.lengt;i++){
+            level.biases[i]=Math.random*2-1
+        }
+    }
+
+    static feedForward(givenInputs,level){
+        for(let i=0;i<level.inputs.length;i++){
+            level.inputs[i]=givenInputs[i];
+        }
+        for(let i=0;i<level.outputs.length;i++){
+            let sum=0
+            for(let j=0;j<level.inputs.length;j++){
+                sum+=level.inputs[j]*level.weights[j][i];
+            }
+        }
+    }
+}

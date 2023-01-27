@@ -38,6 +38,7 @@ function render(){
         traffic[i].draw(ctx,trafficimg)
     }
     car.draw(ctx, trafficimg, traffic);
+    car.draw(ctx, carimg, traffic);
     ctx.restore();
     requestAnimationFrame(render);
 }

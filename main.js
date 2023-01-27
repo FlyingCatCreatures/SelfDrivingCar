@@ -12,13 +12,13 @@ const carCtx=carCanvas.getContext("2d");
 const networkCtx=carCanvas.getContext("2d");
 
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
-const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),400,87,146,"KEYS",maxSpeed);
+const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,87,146,"KEYS",maxSpeed);
 
 const traffic = [
     //new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-101))*100),30,60,"STATIONARYDUMMY"),
 ]
 for (let i=0;i<trafficCount;i++){
-    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-trafficDistance))*100),78,132,"MOVINGDUMMY",Math.floor(Math.random()*(maxSpeed+1))+1))
+    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-trafficDistance))*100)-200,78,132,"MOVINGDUMMY",Math.floor(Math.random()*(maxSpeed+1))+1))
 }
 //console.log(traffic)
 const trafficimg = new Image();  

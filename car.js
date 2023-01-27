@@ -17,6 +17,9 @@ class Car{
 
         if(this.controlType=="KEYS"){
             this.sensor=new Sensor(this);
+            this.brain=new NeuralNetwork(
+                [this.sensor.rayCount,33,11,4]
+            );
         };
         this.controls=new Controls(controlType);
         this.producePolygon()
@@ -30,6 +33,10 @@ class Car{
         }
         if(this.sensor){
             this.sensor.update(roadBorders, traffic);
+            const offsets=this.sensor.readings.map(
+                s=>s==null?0:1-s.offset
+            );
+            const outputs=NeuralNetwork.feedForward(offsets,this.brain);
         }
         //console.table(this.speed,this.y,this.x, this.angle)
         }  

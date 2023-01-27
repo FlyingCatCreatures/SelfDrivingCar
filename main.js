@@ -35,15 +35,16 @@ function Mainloop(){
 
 
 function update(){
-    then = Date.now()
+    var then = Date.now()
     for(let i=0;i<traffic.length;i++){
         traffic[i].update(road.borders,[]);
     }
     car.update(road.borders,traffic);
-    now = Date.now()
-    elapsed = now - then
-    for(elapsed < interval){
-        now = Date.now()
+    var now = Date.now()
+    var elapsed = now - then
+    for(elapsed<interval)
+    {
+        now = Date.now(),
         elapsed = now - then
     }
 
@@ -64,4 +65,3 @@ function animate(){
     ctx.restore();
     requestAnimationFrame(Mainloop);
 }
-//Mainloop();

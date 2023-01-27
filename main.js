@@ -2,7 +2,7 @@ const canvas=document.getElementById("myCanvas");
 canvas.width=850;
 var stop = false;
 var frameCount= 0;
-var $results = $("#results");
+var results = ("#results");
 var fps, fpsInterval, starTime, now, then, elapsed;
 const maxSpeed = 6.55
 const trafficCount = 2000
@@ -35,16 +35,27 @@ function startAnimating(fps){
 
 function animate(){
     requestAnimationFrame(animate);
+<<<<<<< Updated upstream
     now = Date.now();
     elapsed = now - then;
     if (elapsed > fpsinterval) {
         then = now - (elapsed % fpsInterval);
+=======
+    now=Date.now();
+    elapsed=now-then;
+    if(elapsed>fpsInterval){
+        then=now-(elapsed%fpsInterval);
+>>>>>>> Stashed changes
         for(let i=0;i<traffic.length;i++){
             traffic[i].update(road.borders,[]);
         }
         car.update(road.borders,traffic);
         canvas.height=window.innerHeight;
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
         ctx.save();
         ctx.translate(0,-car.y+canvas.height*0.8);
         road.draw(ctx);
@@ -53,5 +64,10 @@ function animate(){
         }
         car.draw(ctx, img, traffic);
         ctx.restore();
+<<<<<<< Updated upstream
     }
+=======
+        requestAnimationFrame(animate);
+    }   
+>>>>>>> Stashed changes
 }

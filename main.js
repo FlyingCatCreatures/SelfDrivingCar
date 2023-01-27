@@ -12,7 +12,7 @@ const carCtx=carCanvas.getContext("2d");
 const networkCtx=carCanvas.getContext("2d");
 
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
-const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,78,132,"AI",maxSpeed);
+const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,87,146,"AI",maxSpeed);
 
 const traffic = [
     //new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-101))*100),30,60,"STATIONARYDUMMY"),
@@ -23,9 +23,9 @@ for (let i=0;i<trafficCount;i++){
 //console.log(traffic)
 const trafficimg = new Image();  
 trafficimg.src = './yellow.png';
-trafficimg.onload = function() {
-    car.draw(carCtx, trafficimg, traffic);
-}
+
+const carimg = new Image();
+carimg.src = './red.png'
 
 
 function update(){

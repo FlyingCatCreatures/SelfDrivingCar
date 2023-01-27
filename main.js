@@ -13,6 +13,7 @@ const networkCtx=carCanvas.getContext("2d");
 
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
 const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,78,132,"AI",maxSpeed);
+
 const traffic = [
     //new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-101))*100),30,60,"STATIONARYDUMMY"),
 ]
@@ -25,6 +26,7 @@ trafficimg.src = './yellow.png';
 trafficimg.onload = function() {
     car.draw(carCtx, trafficimg, traffic);
 }
+
 
 function update(){
     var then = Date.now()
@@ -49,6 +51,11 @@ function render(){
     carCtx.restore();
 
     //Visualizer.drawNetwork(networkCtx,car.brain);
+        traffic[i].draw(ctx,img)
+    
+    car.draw(carCtx, img, traffic);
+    car.draw(carCtx, carimg, traffic);
+    carCtx.restore();
     requestAnimationFrame(render);
 }
 

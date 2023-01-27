@@ -19,7 +19,6 @@ img.src = './car.png';
 img.onload = function() {
     car.draw(ctx, img, traffic);
 }
-car.draw(ctx, img, traffic);
 
 function update(){
     var then = Date.now()

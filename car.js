@@ -40,25 +40,25 @@ class Car{
 
 
     #assessDamage(roadBorders, traffic){
+        for(let i=0;i<roadBorders.length;i++){
+            if(polysIntersect(this.polygon,roadBorders[i])){
+                return true
+            }
+        }
         for(let j=0;j<traffic.length;j++)
             if(car.y<0 && traffic[j].y<0){
                 const checkingYcar=-car.y
                 const checkingYtraffic=-traffic[j].y
                 const DifferenceInY= checkingYtraffic-checkingYcar;
                 if ((DifferenceInY)<(200) && DifferenceInY>-(200))
-                    for(let i=0;i<roadBorders.length;i++){
-                        if(polysIntersect(this.polygon,roadBorders[i])){
-                            return true
-                        }
-                    }
                     for(let i=0;i<traffic.length;i++){
                         if(polysIntersect(this.polygon,traffic[i].polygon)){
                             return true
                         }
-                     }
-            }
-        return false
-        
+                    
+                    }
+                }
+        return false 
     }
 
     #createPolygon(){

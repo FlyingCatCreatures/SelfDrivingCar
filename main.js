@@ -3,7 +3,7 @@ canvas.width=850;
 const frameduration = 1000 / 60
 const maxSpeed = 8.55
 const trafficCount = 200
-const trafficDistance = 205
+const trafficDistance = 100
 const ctx=canvas.getContext("2d");
 const road=new Road(canvas.width/2,canvas.width*0.9);
 const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,78,132,"AI",maxSpeed);
@@ -17,7 +17,6 @@ for (let i=0;i<trafficCount;i++){
 const trafficimg = new Image();  
 trafficimg.src = './yellow.png';
 trafficimg.onload = function() {
-    car.draw(ctx, trafficimg, traffic);
 }
 
 function update(){

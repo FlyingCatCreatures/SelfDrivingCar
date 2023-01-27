@@ -19,7 +19,7 @@ class Level{
             }
         }
 
-        for(let i=0;i<level.biases.lengt;i++){
+        for(let i=0;i<level.biases.length;i++){
             level.biases[i]=Math.random*2-1
         }
     }
@@ -33,6 +33,13 @@ class Level{
             for(let j=0;j<level.inputs.length;j++){
                 sum+=level.inputs[j]*level.weights[j][i];
             }
+
+            if(sum>level.biases[i]){
+                level.ouputs[i]=1;
+            }else{
+                level.outputs[i]=0;
+            }
         }
+        return level.outputs;
     }
 }

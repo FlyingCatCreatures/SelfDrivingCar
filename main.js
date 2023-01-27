@@ -1,13 +1,12 @@
 const canvas=document.getElementById("myCanvas");
 canvas.width=850;
-const interval=1/60
+const frameduration = 1000 / 60
 const maxSpeed = 8.55
 const trafficCount = 200
 const trafficDistance = 205
 const ctx=canvas.getContext("2d");
 const road=new Road(canvas.width/2,canvas.width*0.9);
 const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,60,120,"KEYS",maxSpeed);
-const frameduration = 1000 / 60
 const traffic = [
     //new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-101))*100),30,60,"STATIONARYDUMMY"),
 ]

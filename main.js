@@ -25,19 +25,24 @@ animate();
 
 
 function animate(){
-    for(let i=0;i<traffic.length;i++){
-        traffic[i].update(road.borders,[]);
-    }
-    car.update(road.borders,traffic);
-    canvas.height=window.innerHeight;
-
-    ctx.save();
-    ctx.translate(0,-car.y+canvas.height*0.8);
-    road.draw(ctx);
-    for(let i=0;i<traffic.length;i++){
-        traffic[i].draw(ctx,img)
-    }
-    car.draw(ctx, img, traffic);
-    ctx.restore();
     requestAnimationFrame(animate);
+    now = Date.now();
+    elapsed = now - then;
+    if (elapsed > fpsinterval) {
+        then = now - (elapsed % fpsInterval);
+        for(let i=0;i<traffic.length;i++){
+            traffic[i].update(road.borders,[]);
+        }
+        car.update(road.borders,traffic);
+        canvas.height=window.innerHeight;
+    
+        ctx.save();
+        ctx.translate(0,-car.y+canvas.height*0.8);
+        road.draw(ctx);
+        for(let i=0;i<traffic.length;i++){
+            traffic[i].draw(ctx,img)
+        }
+        car.draw(ctx, img, traffic);
+        ctx.restore();
+    }
 }

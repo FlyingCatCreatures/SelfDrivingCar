@@ -14,8 +14,8 @@ for (let i=0;i<trafficCount;i++){
     traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-trafficDistance))*100),78,132,"MOVINGDUMMY",Math.floor(Math.random()*(maxSpeed+1))+1))
 }
 //console.log(traffic)
-const trafficimg = new Image();  
-trafficimg.src = './yellow.png';
+const img = new Image();  
+img.src = './yellow.png';
 
 const carimg = new Image();
 carimg.src = './red.png';
@@ -35,9 +35,9 @@ function render(){
     ctx.translate(0,-car.y+canvas.height*0.8);
     road.draw(ctx);
     for(let i=0;i<traffic.length;i++){
-        traffic[i].draw(ctx,trafficimg)
+        traffic[i].draw(ctx,img)
     }
-    car.draw(ctx, trafficimg, traffic);
+    car.draw(ctx, img, traffic);
     car.draw(ctx, carimg, traffic);
     ctx.restore();
     requestAnimationFrame(render);

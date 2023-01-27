@@ -47,20 +47,20 @@ function render(){
     for(let i=0;i<traffic.length;i++){
         traffic[i].draw(carCtx,trafficimg)
     }
-    car.draw(carCtx, trafficimg, traffic);
-    carCtx.restore();
+    //car.draw(carCtx, trafficimg, traffic);
 
-    //car.draw(carCtx, img, traffic);
+    //car.draw(carCtx, trafficimg, traffic);
     car.draw(carCtx, carimg, traffic);
     carCtx.restore();
     requestAnimationFrame(render);
 }
 
-function generateCars(N){
+/*function generateCars(N){
     const cars=[];
     for(let i=0;i<N;i++){
         cars.push(new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,78,132,"AI",maxSpeed))
     }
 }
+*/
 update();
 render();

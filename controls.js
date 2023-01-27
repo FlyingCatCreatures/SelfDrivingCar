@@ -34,16 +34,16 @@ class Controls{
                 case "ArrowDown":
                     this.reverse=true;                    
                     break;
-                case "a":
+                case "KeyA":
                     this.left=true; 
                     break;
-                case "d":
+                case "KeyD":
                     this.right=true;                    
                     break;
-                case "w":
+                case "KeyW":
                     this.forward=true;                    
                     break;
-                case "s":
+                case "KeyS":
                     this.reverse=true;                    
                     break;
             }
@@ -62,16 +62,16 @@ class Controls{
                 case "ArrowDown":
                     this.reverse=false;
                     break;
-                case "a":
+                case "KeyA":
                     this.left=false;                    
                     break;
-                case "d":
+                case "KeyD":
                     this.right=false;                    
                     break;
-                case "w":
+                case "KeyW":
                     this.forward=false;   
                      break;
-                case "s":
+                case "KeyS":
                     this.reverse=false;
                     break;
             }

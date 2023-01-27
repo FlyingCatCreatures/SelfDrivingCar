@@ -6,7 +6,7 @@ const trafficCount = 200
 const trafficDistance = 205
 const ctx=canvas.getContext("2d");
 const road=new Road(canvas.width/2,canvas.width*0.9);
-const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,60,120,"KEYS",maxSpeed);
+const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,60,120,"AI",maxSpeed);
 const traffic = [
     //new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-101))*100),30,60,"STATIONARYDUMMY"),
 ]

@@ -17,7 +17,7 @@ class Car{
 
         this.useBrain=controlType=="AI";
 
-        if(this.controlType=="KEYS"){
+        if(this.controlType=="KEYS" || this.controlType=="AI"){
             this.sensor=new Sensor(this);
             this.brain=new NeuralNetwork(
                 [this.sensor.rayCount,33,11,4]
@@ -148,7 +148,7 @@ class Car{
 
 
     draw(ctx, img, traffic){
-        if(this.controlType=="KEYS"){
+        if(this.controlType=="KEYS" || this.controlType=="AI"){
             this.sensor.update(road.borders, traffic);
             this.sensor.draw(ctx);
         };

@@ -1,11 +1,17 @@
-const canvas=document.getElementById("myCanvas");
-canvas.width=850;
+const carCanvas=document.getElementById("carCanvas");
+carCanvas.width=850;
+const networkCanvas=document.getElementById("networkCanvas");
+networkCanvas.width=0;
+
 const frameduration = 1000 / 60
 const maxSpeed = 8.55
 const trafficCount = 200
 const trafficDistance = 205
-const ctx=canvas.getContext("2d");
-const road=new Road(canvas.width/2,canvas.width*0.9);
+
+const carCtx=carCanvas.getContext("2d");
+const networkCtx=carCanvas.getContext("2d");
+
+const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
 const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,78,132,"AI",maxSpeed);
 const traffic = [
     //new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-101))*100),30,60,"STATIONARYDUMMY"),
@@ -17,7 +23,7 @@ for (let i=0;i<trafficCount;i++){
 const trafficimg = new Image();  
 trafficimg.src = './yellow.png';
 trafficimg.onload = function() {
-    car.draw(ctx, trafficimg, traffic);
+    car.draw(carCtx, trafficimg, traffic);
 }
 
 function update(){
@@ -30,17 +36,27 @@ function update(){
 }
 
 function render(){
-    canvas.height=window.innerHeight;
-    ctx.save();
-    ctx.translate(0,-car.y+canvas.height*0.8);
-    road.draw(ctx);
+    carCanvas.height=window.innerHeight;
+    networkCanvas.height=window.innerHeight;
+
+    carCtx.save();
+    carCtx.translate(0,-car.y+carCanvas.height*0.8);
+    road.draw(carCtx);
     for(let i=0;i<traffic.length;i++){
-        traffic[i].draw(ctx,trafficimg)
+        traffic[i].draw(carCtx,trafficimg)
     }
-    car.draw(ctx, trafficimg, traffic);
-    ctx.restore();
+    car.draw(carCtx, trafficimg, traffic);
+    carCtx.restore();
+
+    //Visualizer.drawNetwork(networkCtx,car.brain);
     requestAnimationFrame(render);
 }
 
+function generateCars(N){
+    const cars=[];
+    for(let i=0;i<N;i++){
+        cars.push(new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,78,132,"AI",maxSpeed))
+    }
+}
 update();
 render();

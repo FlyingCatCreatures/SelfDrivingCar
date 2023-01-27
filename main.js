@@ -1,6 +1,6 @@
 const canvas=document.getElementById("myCanvas");
 canvas.width=850;
-const fps=60
+const interval=1/60
 const maxSpeed = 6.55
 const trafficCount = 200
 const trafficDistance = 205
@@ -35,10 +35,18 @@ function Mainloop(){
 
 
 function update(){
+    then = Date.now()
     for(let i=0;i<traffic.length;i++){
         traffic[i].update(road.borders,[]);
     }
     car.update(road.borders,traffic);
+    now = Date.now()
+    elapsed = now - then
+    for(elapsed < interval){
+        now = Date.now()
+        elapsed = now - then
+    }
+
 }
 
 

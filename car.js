@@ -46,7 +46,6 @@ class Car{
                 this.controls.left=outputs[1];
                 this.controls.right=outputs[2];
                 this.controls.reverse=outputs[3];
-
             }
         }
         //console.table(this.speed,this.y,this.x, this.angle)

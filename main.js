@@ -40,14 +40,6 @@ function update(){
         traffic[i].update(road.borders,[]);
     }
     car.update(road.borders,traffic);
-    var now = Date.now()
-    var elapsed = now - then
-    for(elapsed<interval)
-    {
-        now = Date.now(),
-        elapsed = now - then
-    }
-
 }
 
 

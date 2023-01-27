@@ -1,6 +1,6 @@
 const canvas=document.getElementById("myCanvas");
 canvas.width=850;
-
+const fps=60
 const maxSpeed = 6.55
 const trafficCount = 2000
 const trafficDistance = 501
@@ -20,13 +20,9 @@ img.onload = function() {
     car.draw(ctx, img, traffic);
 }
 car.draw(ctx, img, traffic);
-startAnimating(60);
-function startAnimating(fps){
-    fpsInterval = 1000/fps;
-    then=Date.now;
-    starTime = then;
+
     animate();
-}
+
 
 
 
@@ -47,6 +43,8 @@ function animate(){
         }
         car.draw(ctx, img, traffic);
         ctx.restore();
-        requestAnimationFrame(animate);
-
+        setTimeout(() => {
+            requestAnimationFrame(animate);
+        }, 1000/fps);
         }
+        animate();

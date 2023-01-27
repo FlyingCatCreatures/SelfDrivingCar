@@ -42,7 +42,7 @@ class Sensor{
                 const checkingYcar=-car.y
                 const checkingYtraffic=-traffic[i].y
                 const DifferenceInY= checkingYtraffic-checkingYcar;
-                if ((DifferenceInY)<(this.rayLength+30) && DifferenceInY>-(this.rayLength-30)){
+                if ((DifferenceInY)<(this.rayLength+50) && DifferenceInY>-(this.rayLength+50)){
                     for(let j=0;j<poly.length;j++){
                         const value=getIntersection(
                             ray[0],

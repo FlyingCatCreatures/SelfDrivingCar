@@ -21,30 +21,30 @@ img.onload = function() {
 }
 car.draw(ctx, img, traffic);
 
-    animate();
+animate();
 
 
 
 
 
 function animate(){
-        for(let i=0;i<traffic.length;i++){
-            traffic[i].update(road.borders,[]);
-        }
-        car.update(road.borders,traffic);
-        canvas.height=window.innerHeight;
+    for(let i=0;i<traffic.length;i++){
+        traffic[i].update(road.borders,[]);
+    }
+    car.update(road.borders,traffic);
+    canvas.height=window.innerHeight;
         
 
-        ctx.save();
-        ctx.translate(0,-car.y+canvas.height*0.8);
-        road.draw(ctx);
-        for(let i=0;i<traffic.length;i++){
-            traffic[i].draw(ctx,img)
-        }
-        car.draw(ctx, img, traffic);
-        ctx.restore();
-        setTimeout(() => {
-            requestAnimationFrame(animate);
-        }, 1000/fps);
-        }
-        animate();
+    ctx.save();
+    ctx.translate(0,-car.y+canvas.height*0.8);
+    road.draw(ctx);
+    for(let i=0;i<traffic.length;i++){
+        traffic[i].draw(ctx,img)
+    }
+    car.draw(ctx, img, traffic);
+    ctx.restore();
+    setTimeout(() => {
+        requestAnimationFrame(animate);
+    }, 1000/fps);
+}
+animate();

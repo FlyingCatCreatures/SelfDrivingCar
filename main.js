@@ -13,7 +13,7 @@ const stationaryTrafficDensity = 0.5
 const stationaryTrafficCount = stationaryTrafficDensity*TrafficDistance
 const DoStationaryTraffic = false
 
-let KillBarrier=1000
+let KillBarrier=600
 const killBarrierSpeed=4
 
 let IterationIsDone = false

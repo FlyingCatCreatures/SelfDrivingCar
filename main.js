@@ -17,6 +17,11 @@ const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
 
 const numberOfAI=100
 const cars=generateCars(numberOfAI);
+let bestCar=cars[0];
+if(localStorage.getItem("bestBrain")){
+    bestCar.brain=JSON.parse(
+        localStorage.getItem("bestBrain"));
+}
 
 const traffic = [
     //new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-101))*100),30,60,"STATIONARYDUMMY"),
@@ -40,7 +45,7 @@ function update(){
     for(let i=0;i<cars.length;i++){
         cars[i].update(road.borders,traffic);
     }
-    const bestCar=cars.find(
+    bestCar=cars.find(
         c=>c.y==Math.min(
             ...cars.map(c=>c.y)
         )
@@ -52,11 +57,6 @@ function render(){
     carCanvas.height=window.innerHeight;
     networkCanvas.height=window.innerHeight;
     carCtx.save();
-    const bestCar=cars.find(
-        c=>c.y==Math.min(
-            ...cars.map(c=>c.y)
-        )
-    );
     carCtx.translate(0,-bestCar.y+carCanvas.height*0.8);
     road.draw(carCtx);
     for(let i=0;i<traffic.length;i++){
@@ -77,6 +77,13 @@ function generateCars(Amount){
     }
     return cars;
 }
+function save(){
+    localStorage.setItem("bestBrain",
+        JSON.stringify(bestCar.brain));
+}
 
+function discard(){
+    localStorage.removeItem("bestBrain")
+}
 update();
 render();

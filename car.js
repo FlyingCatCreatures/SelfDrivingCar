@@ -62,19 +62,22 @@ class Car{
                 return true
             }
         }
-        for(let j=0;j<traffic.length;j++)
-            if(cars[0].y<0 && traffic[j].y<0){
-                const checkingYcar=-car.y
-                const checkingYtraffic=-traffic[j].y
-                const DifferenceInY= checkingYtraffic-checkingYcar;
-                if ((DifferenceInY)<(200) && DifferenceInY>-(200))
-                    for(let i=0;i<traffic.length;i++){
-                        if(polysIntersect(this.polygon,traffic[i].polygon)){
-                            return true
+        for(let j=0;j<traffic.length;j++){
+            for(let k=0;k<cars.length;k++){
+                if(cars[k].y<0 && traffic[j].y<0){
+                    const checkingYcar=-cars[k].y
+                    const checkingYtraffic=-traffic[j].y
+                    const DifferenceInY= checkingYtraffic-checkingYcar;
+                    if ((DifferenceInY)<(200) && DifferenceInY>-(200))
+                        for(let i=0;i<traffic.length;i++){
+                            if(polysIntersect(this.polygon,traffic[i].polygon)){
+                                return true
                         }
                     
                     }
                 }
+            }
+        }
         return false 
     }
 

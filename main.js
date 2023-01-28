@@ -5,7 +5,7 @@ networkCanvas.width=0;
 
 const frameduration = 1000 / 60
 const maxSpeed = 8.55
-const trafficCount = 5
+const trafficCount = 15
 const trafficDistance = 5
 
 const carCtx=carCanvas.getContext("2d");
@@ -45,7 +45,6 @@ function update(){
             ...cars.map(c=>c.y)
         )
     );
-    console.log(bestCar,"1")
     setTimeout(update, frameduration)
 }
 

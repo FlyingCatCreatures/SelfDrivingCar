@@ -14,7 +14,6 @@ class Car{
         this.damaged=false
         this.controlType=controlType
         this.drawStyle=drawStyle
-
         this.useBrain=controlType=="AI";
 
         if(this.controlType=="KEYS" || this.controlType=="AI"){
@@ -27,7 +26,10 @@ class Car{
         this.producePolygon()
     }
 
-    update(roadBorders, traffic){
+    update(roadBorders, traffic, KillBarrier){
+        if(this.y>KillBarrier){
+            this.damaged=true
+        }
         if(!this.damaged){
             this.#move();
             this.polygon=this.#createPolygon();

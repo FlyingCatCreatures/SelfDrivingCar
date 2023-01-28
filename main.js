@@ -13,9 +13,11 @@ const stationaryTrafficDensity = 0.5
 const stationaryTrafficCount = stationaryTrafficDensity*TrafficDistance
 const DoStationaryTraffic = false
 
+let KillBarrier=1000
+
 let IterationIsDone = false
 
-const NeuralNetworkAdaptabillityValue = 0.05
+const NeuralNetworkAdaptabillityValue = 1
 // How much new iterations differ from previous best on a scale of 0 to 1
 
 const carCtx=carCanvas.getContext("2d");
@@ -23,9 +25,8 @@ const networkCtx=carCanvas.getContext("2d");
 
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
 
-//const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),-10,87,146,"KEYS",maxSpeed);
 
-const numberOfAI=200
+const numberOfAI=100
 const cars=generateCars(numberOfAI);
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){
@@ -57,16 +58,23 @@ const carimg = new Image();
 carimg.src = './red.png'
 
 function checkDamage(){
-    return cars.damaged
+    for(let i=0;i<cars.length;i++){
+        if(cars[i].damaged==false){
+            return false
+        }
+    }
+    return true
 }
 
+
 function update(){
+    KillBarrier-=3
     var then = Date.now()
     for(let i=0;i<traffic.length;i++){
         traffic[i].update(road.borders,[]);
     }
     for(let i=0;i<cars.length;i++){
-        cars[i].update(road.borders,traffic);
+        cars[i].update(road.borders,traffic,KillBarrier);
     }
     bestCar=cars.find(
         c=>c.y==Math.min(
@@ -75,10 +83,10 @@ function update(){
     );
     if(
         bestCar.y<(TrafficDistance*-100-500) ||
-        cars.every(checkDamage)
+        checkDamage()
         //that second part is the part that is failing
     ){
-        IterationIsDone =  true
+        IterationIsDone =  true;
     }
     if(IterationIsDone){
         location.reload();

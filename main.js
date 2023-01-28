@@ -5,8 +5,12 @@ networkCanvas.width=0;
 
 const frameduration = 1000 / 60
 const maxSpeed = 8.55
-const trafficCount = 15
-const trafficDistance = 5
+const movingTrafficDistance = 30
+const movingTrafficDensity=0.5
+const movingTrafficCount = movingTrafficDensity*movingTrafficDistance
+const stationaryTrafficDistance = 100
+const stationaryTrafficDensity = 0.5
+const stationaryTrafficCount = stationaryTrafficDensity*stationaryTrafficDistance
 
 const carCtx=carCanvas.getContext("2d");
 const networkCtx=carCanvas.getContext("2d");
@@ -19,15 +23,23 @@ const numberOfAI=100
 const cars=generateCars(numberOfAI);
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){
-    bestCar.brain=JSON.parse(
+    for(let i=0;i<cars.length;i++){
+    cars[i].brain=JSON.parse(
         localStorage.getItem("bestBrain"));
+    if(i!=0){
+        NeuralNetwork.mutate(cars[i].brain,0.2);
+    }
+    }
 }
 
 const traffic = [
     //new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-101))*100),30,60,"STATIONARYDUMMY"),
 ]
-for (let i=0;i<trafficCount;i++){
-    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-trafficDistance))*100)-450,78,132,"MOVINGDUMMY",Math.floor(Math.random()*(maxSpeed+1))+1))
+for (let i=0;i<movingTrafficCount;i++){
+    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-movingTrafficDistance))*100)-450,78,132,"MOVINGDUMMY",Math.floor(Math.random()*(maxSpeed+1))+1))
+}
+for (let i=0;i<stationaryTrafficCount;i++){
+    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-stationaryTrafficDistance))*100)-450,78,132,"STATIONARYDUMMY"));
 }
 //console.log(traffic)
 const trafficimg = new Image();  

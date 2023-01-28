@@ -5,12 +5,14 @@ networkCanvas.width=0;
 
 const frameduration = 1000 / 60
 const maxSpeed = 8.55
-const movingTrafficDistance = 30
+const TrafficDistance = 30
 const movingTrafficDensity=0.5
-const movingTrafficCount = movingTrafficDensity*movingTrafficDistance
-const stationaryTrafficDistance = 100
+const movingTrafficCount = movingTrafficDensity*TrafficDistance
 const stationaryTrafficDensity = 0.5
-const stationaryTrafficCount = stationaryTrafficDensity*stationaryTrafficDistance
+const stationaryTrafficCount = stationaryTrafficDensity*TrafficDistance
+
+const NeuralNetworkAdaptabillityValue = 0.2
+// How much new iterations differ from previous best on a scale of 0 to 1
 
 const carCtx=carCanvas.getContext("2d");
 const networkCtx=carCanvas.getContext("2d");
@@ -33,7 +35,6 @@ if(localStorage.getItem("bestBrain")){
 }
 
 const traffic = [
-    //new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-101))*100),30,60,"STATIONARYDUMMY"),
 ]
 for (let i=0;i<movingTrafficCount;i++){
     traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-movingTrafficDistance))*100)-450,78,132,"MOVINGDUMMY",Math.floor(Math.random()*(maxSpeed+1))+1))

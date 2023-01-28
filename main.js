@@ -25,7 +25,7 @@ const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
 
 //const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),-10,87,146,"KEYS",maxSpeed);
 
-const numberOfAI=1
+const numberOfAI=100
 const cars=generateCars(numberOfAI);
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){

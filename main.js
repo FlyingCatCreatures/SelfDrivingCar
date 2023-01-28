@@ -86,6 +86,7 @@ function update(){
         checkDamage()
         //that second part is the part that is failing
     ){
+        save();
         IterationIsDone =  true;
     }
     if(IterationIsDone){

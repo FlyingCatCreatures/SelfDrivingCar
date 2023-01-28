@@ -110,8 +110,8 @@ function render(){
     }
     bestCar.draw(carCtx, carimg ,traffic, true)
     carCtx.restore();
-    //requestAnimationFrame(render);
-    setTimeout(render, 1000/30)
+    requestAnimationFrame(render);
+    //setTimeout(render, 1000/30)
 }
 
 function generateCars(Amount){

@@ -29,7 +29,7 @@ if(localStorage.getItem("bestBrain")){
     cars[i].brain=JSON.parse(
         localStorage.getItem("bestBrain"));
     if(i!=0){
-        NeuralNetwork.mutate(cars[i].brain,0.2);
+        NeuralNetwork.mutate(cars[i].brain,NeuralNetworkAdaptabillityValue);
     }
     }
 }

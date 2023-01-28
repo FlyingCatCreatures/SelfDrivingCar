@@ -76,6 +76,7 @@ function update(){
     if(
         bestCar.y<(TrafficDistance*-100-500) ||
         cars.every(checkDamage)
+        //that second part is the part that is failing
     ){
         IterationIsDone =  true
     }

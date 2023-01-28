@@ -37,10 +37,10 @@ if(localStorage.getItem("bestBrain")){
 const traffic = [
 ]
 for (let i=0;i<movingTrafficCount;i++){
-    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-movingTrafficDistance))*100)-450,78,132,"MOVINGDUMMY",Math.floor(Math.random()*(maxSpeed+1))+1))
+    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-TrafficDistance))*100)-450,78,132,"MOVINGDUMMY",Math.floor(Math.random()*(maxSpeed+1))+1))
 }
 for (let i=0;i<stationaryTrafficCount;i++){
-    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-stationaryTrafficDistance))*100)-450,78,132,"STATIONARYDUMMY"));
+    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-TrafficDistance))*100)-450,78,132,"STATIONARYDUMMY"));
 }
 //console.log(traffic)
 const trafficimg = new Image();  

@@ -14,6 +14,7 @@ const stationaryTrafficCount = stationaryTrafficDensity*TrafficDistance
 const DoStationaryTraffic = false
 
 let KillBarrier=1000
+const killBarrierSpeed=4
 
 let IterationIsDone = false
 
@@ -26,7 +27,7 @@ const networkCtx=carCanvas.getContext("2d");
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
 
 
-const numberOfAI=100
+const numberOfAI=10
 const cars=generateCars(numberOfAI);
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){
@@ -68,7 +69,7 @@ function checkDamage(){
 
 
 function update(){
-    KillBarrier-=3
+    KillBarrier-=killBarrierSpeed
     var then = Date.now()
     for(let i=0;i<traffic.length;i++){
         traffic[i].update(road.borders,[]);

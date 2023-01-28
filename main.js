@@ -6,7 +6,7 @@ networkCanvas.width=0;
 const frameduration = 1000 / 300
 const maxSpeed = 8.55
 const TrafficDistance = 250
-const movingTrafficDensity=0.5
+const movingTrafficDensity=1
 const movingTrafficCount = movingTrafficDensity*TrafficDistance
 const DoMovingTraffic = true
 const stationaryTrafficDensity = 0.5
@@ -27,7 +27,7 @@ const networkCtx=carCanvas.getContext("2d");
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
 
 
-const numberOfAI=10
+const numberOfAI=20
 const cars=generateCars(numberOfAI);
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){
@@ -52,6 +52,7 @@ if(DoStationaryTraffic){
         traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-TrafficDistance))*100)-450,78,132,"STATIONARYDUMMY"));
     }
 }
+traffic.push(new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),-800,78,132,"STATIONARYDUMMY"))
 const trafficimg = new Image();  
 trafficimg.src = './yellow.png';
 
@@ -93,7 +94,7 @@ function update(){
     if(IterationIsDone){
         location.reload();
     }
-    setTimeout(update, 1);
+    setTimeout(update, 1000/60);
 }
 
 function render(){

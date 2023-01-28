@@ -6,7 +6,7 @@ networkCanvas.width=0;
 const frameduration = 1000 / 300
 const maxSpeed = 8.55
 const TrafficDistance = 250
-const movingTrafficDensity=1
+const movingTrafficDensity=0.5
 const movingTrafficCount = movingTrafficDensity*TrafficDistance
 const DoMovingTraffic = true
 const stationaryTrafficDensity = 0.5
@@ -93,7 +93,7 @@ function update(){
     if(IterationIsDone){
         location.reload();
     }
-    setTimeout(update, frameduration);
+    setTimeout(update, 1);
 }
 
 function render(){

@@ -8,8 +8,10 @@ const maxSpeed = 8.55
 const TrafficDistance = 30
 const movingTrafficDensity=0.5
 const movingTrafficCount = movingTrafficDensity*TrafficDistance
+const DoMovingTraffic = true
 const stationaryTrafficDensity = 0.5
 const stationaryTrafficCount = stationaryTrafficDensity*TrafficDistance
+const DoStationaryTraffic = true
 
 const NeuralNetworkAdaptabillityValue = 0.2
 // How much new iterations differ from previous best on a scale of 0 to 1
@@ -36,11 +38,15 @@ if(localStorage.getItem("bestBrain")){
 
 const traffic = [
 ]
-for (let i=0;i<movingTrafficCount;i++){
-    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-TrafficDistance))*100)-450,78,132,"MOVINGDUMMY",Math.floor(Math.random()*(maxSpeed+1))+1))
+if(DoMovingTraffic){
+    for (let i=0;i<movingTrafficCount;i++){
+        traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-TrafficDistance))*100)-450,78,132,"MOVINGDUMMY",Math.floor(Math.random()*(maxSpeed+1))+1))
+    }
 }
-for (let i=0;i<stationaryTrafficCount;i++){
-    traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-TrafficDistance))*100)-450,78,132,"STATIONARYDUMMY"));
+if(DoStationaryTraffic){
+    for (let i=0;i<stationaryTrafficCount;i++){
+        traffic.push(new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-TrafficDistance))*100)-450,78,132,"STATIONARYDUMMY"));
+    }
 }
 //console.log(traffic)
 const trafficimg = new Image();  
@@ -98,5 +104,6 @@ function save(){
 function discard(){
     localStorage.removeItem("bestBrain")
 }
+
 update();
 render();

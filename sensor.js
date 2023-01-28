@@ -95,7 +95,8 @@ class Sensor{
             }
             ctx.beginPath();
             ctx.lineWidth=2;
-            if(car.damaged){
+            ctx.strokeStyle="green"
+            if(cars[0].damaged){
             ctx.strokeStyle="black";
             }else{
                 ctx.strokeStyle="green";

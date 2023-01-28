@@ -63,7 +63,7 @@ class Car{
             }
         }
         for(let j=0;j<traffic.length;j++)
-            if(car.y<0 && traffic[j].y<0){
+            if(cars[0].y<0 && traffic[j].y<0){
                 const checkingYcar=-car.y
                 const checkingYtraffic=-traffic[j].y
                 const DifferenceInY= checkingYtraffic-checkingYcar;
@@ -146,10 +146,12 @@ class Car{
     }
 
 
-    draw(ctx, img, traffic){
+    draw(ctx, img, traffic,drawSensor=false){
         if(this.controlType=="KEYS" || this.controlType=="AI"){
             this.sensor.update(road.borders, traffic);
-            this.sensor.draw(ctx);
+            if(drawSensor){
+                this.sensor.draw(ctx);
+            }
         };
         if(this.drawStyle=="image"){
             ctx.save();
@@ -172,6 +174,7 @@ class Car{
             }
             ctx.fill();
         }
+        
 
     }
     

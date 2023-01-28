@@ -5,14 +5,18 @@ networkCanvas.width=0;
 
 const frameduration = 1000 / 60
 const maxSpeed = 8.55
-const trafficCount = 200
-const trafficDistance = 205
+const trafficCount = 5
+const trafficDistance = 5
 
 const carCtx=carCanvas.getContext("2d");
 const networkCtx=carCanvas.getContext("2d");
 
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
-const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),-10,87,146,"KEYS",maxSpeed);
+
+//const car=new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),-10,87,146,"KEYS",maxSpeed);
+
+const numberOfAI=100
+const cars=generateCars(numberOfAI);
 
 const traffic = [
     //new Car(road.getLaneCenter(Math.floor(Math.random()*(road.laneCount))),(Math.floor(Math.random()*(-101))*100),30,60,"STATIONARYDUMMY"),
@@ -33,7 +37,15 @@ function update(){
     for(let i=0;i<traffic.length;i++){
         traffic[i].update(road.borders,[]);
     }
-    car.update(road.borders,traffic);
+    for(let i=0;i<cars.length;i++){
+        cars[i].update(road.borders,traffic);
+    }
+    const bestCar=cars.find(
+        c=>c.y==Math.min(
+            ...cars.map(c=>c.y)
+        )
+    );
+    console.log(bestCar,"1")
     setTimeout(update, frameduration)
 }
 
@@ -41,22 +53,31 @@ function render(){
     carCanvas.height=window.innerHeight;
     networkCanvas.height=window.innerHeight;
     carCtx.save();
-    carCtx.translate(0,-car.y+carCanvas.height*0.8);
+    const bestCar=cars.find(
+        c=>c.y==Math.min(
+            ...cars.map(c=>c.y)
+        )
+    );
+    carCtx.translate(0,-bestCar.y+carCanvas.height*0.8);
     road.draw(carCtx);
     for(let i=0;i<traffic.length;i++){
         traffic[i].draw(carCtx,trafficimg)
     }
-    car.draw(carCtx, carimg, traffic);
+    for(let i=0;i<cars.length;i++){
+        cars[i].draw(carCtx, carimg, traffic);
+    }
+    bestCar.draw(carCtx, carimg ,traffic, true)
     carCtx.restore();
     requestAnimationFrame(render);
 }
 
-/*function generateCars(N){
+function generateCars(Amount){
     const cars=[];
-    for(let i=0;i<N;i++){
+    for(let i=0;i<Amount;i++){
         cars.push(new Car(road.getLaneCenter(Math.floor(road.laneCount/2)),300,78,132,"AI",maxSpeed))
     }
+    return cars;
 }
-*/
+
 update();
 render();

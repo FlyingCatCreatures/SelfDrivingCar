@@ -3,9 +3,9 @@ carCanvas.width=850;
 const networkCanvas=document.getElementById("networkCanvas");
 networkCanvas.width=0;
 
-const frameduration = 1000 / 60
+const frameduration = 1000 / 300
 const maxSpeed = 8.55
-const TrafficDistance = 30
+const TrafficDistance = 250
 const movingTrafficDensity=1
 const movingTrafficCount = movingTrafficDensity*TrafficDistance
 const DoMovingTraffic = true
@@ -17,7 +17,7 @@ let KillBarrier=1000
 
 let IterationIsDone = false
 
-const NeuralNetworkAdaptabillityValue = 1
+const NeuralNetworkAdaptabillityValue = 0.05
 // How much new iterations differ from previous best on a scale of 0 to 1
 
 const carCtx=carCanvas.getContext("2d");

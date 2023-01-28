@@ -17,7 +17,7 @@ let KillBarrier=1000
 
 let IterationIsDone = false
 
-const NeuralNetworkAdaptabillityValue = 1
+const NeuralNetworkAdaptabillityValue = 0.1
 // How much new iterations differ from previous best on a scale of 0 to 1
 
 const carCtx=carCanvas.getContext("2d");
@@ -86,6 +86,7 @@ function update(){
         checkDamage()
         //that second part is the part that is failing
     ){
+        save();
         IterationIsDone =  true;
     }
     if(IterationIsDone){

@@ -19,7 +19,7 @@ class Car{
         if(this.controlType=="KEYS" || this.controlType=="AI"){
             this.sensor=new Sensor(this);
             this.brain=new NeuralNetwork(
-                [this.sensor.rayCount,10,6,4]
+                [this.sensor.rayCount,10,6,4],
             );
         };
         this.controls=new Controls(controlType);
@@ -31,9 +31,13 @@ class Car{
             this.damaged=true
         }
         if(!this.damaged){
-            this.#move();
+            if(this.controlType=="AI" || this.controlType=="KEYS" || this.controlType=="MOVINGTRAFFIC"){
+                this.#move();
+            }
             this.polygon=this.#createPolygon();
-            this.damaged=this.#assessDamage(roadBorders, traffic);
+            if(this.controlType=="AI" || this.controlType=="KEYS" || this.controlType=="MOVINGTRAFFIC"){
+                this.damaged=this.#assessDamage(roadBorders, traffic);
+            }
         }
         if(this.sensor){
             this.sensor.update(roadBorders, traffic);

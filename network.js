@@ -52,7 +52,7 @@ class Level{
             this.weights[i]=new Array(outputCount)
         }
 
-        Level.#randomize(this);
+        //Level.#randomize(this);
     }
 
     static #randomize(level){

@@ -5,8 +5,8 @@ networkCanvas.width=0;
 
 const frameduration = 1000 / 300
 const maxSpeed = 8.55
-const TrafficDistance = 250
-const movingTrafficDensity=1
+const TrafficDistance = 125
+const movingTrafficDensity=0.8
 const movingTrafficCount = movingTrafficDensity*TrafficDistance
 const DoMovingTraffic = true
 const stationaryTrafficDensity = 0.5
@@ -18,7 +18,7 @@ const killBarrierSpeed=4
 
 let IterationIsDone = false
 
-const NeuralNetworkAdaptabillityValue = 0.05
+const NeuralNetworkAdaptabillityValue = 0.02
 // How much new iterations differ from previous best on a scale of 0 to 1
 
 const carCtx=carCanvas.getContext("2d");
@@ -27,7 +27,7 @@ const networkCtx=carCanvas.getContext("2d");
 const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
 
 
-const numberOfAI=20
+const numberOfAI=100
 const cars=generateCars(numberOfAI);
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){

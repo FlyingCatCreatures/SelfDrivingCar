@@ -1,5 +1,5 @@
 const carCanvas=document.getElementById("carCanvas");
-carCanvas.width=1452;
+carCanvas.width=1350;
 const networkCanvas=document.getElementById("networkCanvas");
 networkCanvas.width=0;
 
@@ -18,7 +18,7 @@ const killBarrierSpeed=4
 
 let IterationIsDone = false
 
-const NeuralNetworkAdaptabillityValue = 0.02
+const NeuralNetworkAdaptabillityValue = 0.01
 // How much new iterations differ from previous best on a scale of 0 to 1
 
 const carCtx=carCanvas.getContext("2d");

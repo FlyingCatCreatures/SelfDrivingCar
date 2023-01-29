@@ -5,8 +5,8 @@ networkCanvas.width=0;
 
 const frameduration = 1000 / 300
 const maxSpeed = 8.55
-const TrafficDistance = 125
-const movingTrafficDensity=0.8
+const TrafficDistance = 300
+const movingTrafficDensity=1.5
 const movingTrafficCount = movingTrafficDensity*TrafficDistance
 const DoMovingTraffic = true
 const stationaryTrafficDensity = 0.5

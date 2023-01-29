@@ -1,5 +1,5 @@
 const carCanvas=document.getElementById("carCanvas");
-carCanvas.width=850;
+carCanvas.width=1452;
 const networkCanvas=document.getElementById("networkCanvas");
 networkCanvas.width=0;
 

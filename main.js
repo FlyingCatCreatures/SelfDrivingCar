@@ -1,12 +1,12 @@
 const carCanvas=document.getElementById("carCanvas");
-carCanvas.width=1350;
+carCanvas.width=1150;
 const networkCanvas=document.getElementById("networkCanvas");
 networkCanvas.width=0;
 
 const frameduration = 1000 / 300
 const maxSpeed = 8.55
 const TrafficDistance = 300
-const movingTrafficDensity=1.5
+const movingTrafficDensity=0.75
 const movingTrafficCount = movingTrafficDensity*TrafficDistance
 const DoMovingTraffic = true
 const stationaryTrafficDensity = 0.5
@@ -24,10 +24,10 @@ const NeuralNetworkAdaptabillityValue = 0.01
 const carCtx=carCanvas.getContext("2d");
 const networkCtx=carCanvas.getContext("2d");
 
-const road=new Road(carCanvas.width/2,carCanvas.width*0.9);
+const road=new Road(carCanvas.width/2,carCanvas.width*0.95);
 
 
-const numberOfAI=15
+const numberOfAI=50
 
 const cars=generateCars(numberOfAI);
 let bestCar=cars[0];
@@ -88,7 +88,6 @@ function update(){
     if(
         bestCar.y<(TrafficDistance*-100-500) ||
         checkDamage()
-        //that second part is the part that is failing
     ){
         save();
         IterationIsDone =  true;
@@ -114,7 +113,6 @@ function render(){
     bestCar.draw(carCtx, carimg ,traffic, true)
     carCtx.restore();
     requestAnimationFrame(render);
-    //setTimeout(render, 1000/30)
 }
 
 function generateCars(Amount){

@@ -31,11 +31,11 @@ class Car{
             this.damaged=true
         }
         if(!this.damaged){
-            if(this.controlType=="AI" || this.controlType=="KEYS" || this.controlType=="MOVINGTRAFFIC"){
+            if(this.controlType=="AI" || this.controlType=="KEYS" || this.controlType=="MOVINGDUMMY"){
                 this.#move();
             }
             this.polygon=this.#createPolygon();
-            if(this.controlType=="AI" || this.controlType=="KEYS" || this.controlType=="MOVINGTRAFFIC"){
+            if(this.controlType=="AI" || this.controlType=="KEYS"){
                 this.damaged=this.#assessDamage(roadBorders, traffic);
             }
         }
